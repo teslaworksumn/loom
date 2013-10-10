@@ -1,0 +1,10 @@
+Someone wants to report a problem or make a request for the ExCEED Labs space
+=============================================================================
+
+Email: {{ form['email'] }}
+Report or request:
+
+{{ form['report'] }}
+
+----------------------------------------------
+Try to resolve this on Basecamp, not by email!

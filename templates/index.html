@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% set title = 'Home' %}
+{% set width = 10 %}
+
+{% block html_head %}
+{% endblock %}
+
+{% block html_body %}
+
+<div class="row">
+    <h1>Scheduled Priority Time</h1>
+    <p class="text-muted"> <em>Contact one of your group's officers to schedule priority time for your project</em></p>
+
+    <!-- Generated Google Calendar -->
+    <iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=umn.edu_aoqat1hamtbqcuvdr8237ke67k%40group.calendar.google.com&amp;color=%23875509&amp;ctz=America%2FChicago" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</div>
+
+{% import 'macros/form.html' as form with context %}
+
+<div class="row">
+    <h1>Report a problem or make a request</h1>
+    <p class="text-muted"> <em>No emergencies: requests may take a while to be processed</em></p>
+
+    {{ form.start('request-form') }}
+
+    {{ form.input('email', 'email', "Email Address", "goldy001@umn.edu", 'lg') }}
+    {{ form.textarea('report', "Report", "", 'lg', 12) }}
+
+    {{ form.submit("Submit", 'success', 'lg') }}
+
+    {{ form.end() }}
+</div>
+
+{% endblock %}
+
+{% block html_post_body %}
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+    {% if mixpanel_token %}
+    mixpanel.track("Home Page");
+    mixpanel.track_forms("#report-form", "Report Problem");
+    {% endif %}
+
+    $('form .has-error :input:visible:enabled:first').focus();
+  });
+</script>
+
+{% endblock %}
