@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% set title = 'Priority Time' %}
+{% set width = 8 %}
+
+{% block html_head %}
+{% endblock %}
+
+{% block html_body %}
+
+<div class="row">
+    <div class="lead">
+        <h1>Scheduled Priority Time</h1>
+        <p>Priority time was invented under the premise that even when a group really needs to use the Labs at a specific time, they likely won't need an <em>entire</em> room or <em>every</em> machine.</p>
+        <p>Therefore, when a group has priority time they have not made a reservation - instead, they are only given the authority to request immediate use of a work spot or machine they need.</p>
+        
+        <p>With priority time, you <strong>can:</strong></p>
+        <ul>
+            <li>Ask to use a machine someone is working on if you need it</li>
+            <li>Ask someone to evacuate a space you need to work in</li>
+        </ul>
+        
+        <p>With priority time, you <strong>cannot:</strong></p>
+        <ul>
+            <li>Ask to use a machine someone is working on, but use it non-productively (Facebook)</li>
+            <li>"Reserve" the entire room. Other people are allowed to fill the face </li>
+        </ul>
+        
+        <p>This system only works if priority time is the exception, not something that is reserved regularly or defensively. Therefore, <strong>reserve as little priority time as you can</strong> and only with a specific and good reason.</p>
+        
+        <p>To reserve priority time in the Labs, contact your group's officers. See you around!</p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block html_post_body %}
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+    {% if mixpanel_token %}
+    mixpanel.track("Home Page");
+    mixpanel.track_forms("#report-form", "Report Problem");
+    {% endif %}
+  });
+</script>
+
+{% endblock %}

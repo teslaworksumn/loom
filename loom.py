@@ -62,6 +62,10 @@ def index():
     flash(strings.ERROR_NOT_SUBMITTED, 'danger')
     return render_template('index.html', form=form, errors=errors, mixpanel_token=mixpanel_token())
 
+@app.route('/priority-time')
+def priority_time():
+    return render_template('priority-time.html', mixpanel_token=mixpanel_token())
+
 def mixpanel_token():
     if config.MIXPANEL_SUPPRESS_SEND:
         return None
